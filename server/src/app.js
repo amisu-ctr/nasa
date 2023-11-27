@@ -10,10 +10,6 @@ const planetsRouter = require('./routes/planets/planets.router')
 app.use(cors())
 
 app.use(express.json())
-app.get('/', (req, res) => {
-    console.log('hey')
-    res.send('come')
-})
 
 app.use(planetsRouter)
 
