@@ -4,7 +4,9 @@ const app = express();
 const path = require("path")
 const morgan = require('morgan')
 
-const planetsRouter = require('./routes/planets/planets.router')
+const planetsRouter = require('./routes/planets/planets.router');
+const { launches } = require('./models/launches.model');
+const launchesRouter = require('./routes/launches/launches.router');
 
 // app.use(cors({
 //     origin: 'http://localhost:3000',
@@ -21,5 +23,6 @@ app.get('/', (req, res) => {
 })
 
 app.use(planetsRouter)
+app.use(launchesRouter)
 
 module.exports = app
