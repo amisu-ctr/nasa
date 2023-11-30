@@ -7,7 +7,7 @@ const morgan = require('morgan')
 const planetsRouter = require('./routes/planets/planets.router');
 const { launches } = require('./models/launches.model');
 const launchesRouter = require('./routes/launches/launches.router');
-
+console.log(launches)
 // app.use(cors({
 //     origin: 'http://localhost:3000',
 //   }));
@@ -16,11 +16,7 @@ app.use(morgan('combined'));
 
 app.use(express.json())
 
-app.use(express.static(path.join(__dirname,'..','public')))
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join)
-})
 
 app.use(planetsRouter)
 app.use(launchesRouter)
