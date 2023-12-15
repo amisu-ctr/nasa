@@ -1,10 +1,10 @@
-const {getAllLaunches, addNewLaunch, existsLaunchWithId, abortLaunchById} = require('../../models/launches.model')
+const {getAllLaunches, existsLaunchWithId, abortLaunchById, scheduleNewLaunch} = require('../../models/launches.model')
 
-function httpGetAllLaunches(req, res) {
-    return res.status(200).json(getAllLaunches())
+async function httpGetAllLaunches(req, res) {
+    return res.status(200).json(await getAllLaunches())
 }
 
-function httpAddNewLaunch(req, res) {
+async  function httpAddNewLaunch(req, res) {
     // extract body properties
     const launch = req.body
 
@@ -24,7 +24,7 @@ function httpAddNewLaunch(req, res) {
     }
     
     //add new launch
-    addNewLaunch(launch)
+   await scheduleNewLaunch(launch)
     return res.status(201).json(launch)
 }
 
