@@ -13,11 +13,13 @@ jobs:
         node-version: [14.x, 16.x]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2  # Existing actions to checkout our source code
       - name: Use Node.js  ${{ matrix.node.version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v2  # action to setup different versions of node
         with: 
           node-version: ${{ matrix.node.version }}
+      - name: MongoDB in GitHub Actions
+        uses: supercharge/mongodb-github-action@1.10.0
       - run: npm install
       - run: npm run build --prefix client
       - run: npm test
